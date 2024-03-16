@@ -1,0 +1,78 @@
+{
+	"compiler": {
+		"version": "0.8.24+commit.e11b9ed9"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getOwnerOfToken",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTotalTokenNumber",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/VotingSystem.sol": "AgendaProposalToken"
+		},
+		"evmVersion": "shanghai",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/VotingSystem.sol": {
+			"keccak256": "0xf17171a46f3dee8a16705002c4695ad52e48a9489c480c28368d2ae3cc665618",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://38b7aa4e5cb68246795659ec77fef04071ef469910d8e4c45bbfbbbd0aea571e",
+				"dweb:/ipfs/QmV7hnZEDrxKx7ZX2FXbhRfn9t1dYmiYNbgKRE4Yc7oZAi"
+			]
+		}
+	},
+	"version": 1
+}
