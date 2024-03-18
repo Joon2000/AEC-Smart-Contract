@@ -16,9 +16,13 @@ interface AECToken {
 contract VotingSystem {
     address APTAddress = 0xAdB8d027111ae2cB88e3C00730AF8EEeCBc21Ca8;
     address AECAddress = 0x20552E92665A832cA5c3EA22199f4B1E800652c4;
+
+    AgendaProposalToken APTcontract = AgendaProposalToken(APTAddress);
+    AECToken AECcontract = AECToken(AECAddress);
+
     address contractOwner;
 
-    uint256 totalAgendaNumber = AgendaProposalToken(APTAddress).getTotalTokenNumber();
+    uint256 totalAgendaNumber = APTcontract.getTotalTokenNumber();
     uint256 maxVoteToken = 100;
 
     uint256[] private listedAgendaId;
@@ -44,7 +48,7 @@ contract VotingSystem {
         require (agendaTokenId<=totalAgendaNumber, "No existing agenda id");
         require (amount>0, "0 token transferred");
         require (idToAgendaData[agendaTokenId].totalVotes+amount<=maxVoteToken, "Maximum available token input exceeded");
-        AECToken(AECAddress).burn(voterAddress, amount);
+        AECcontract.burn(voterAddress, amount);
         // approveAndTransfer(voterAddress, amount);
         AgendaStatus storage agenda = idToAgendaData[agendaTokenId];
         agenda.totalVotes+= amount;
@@ -96,9 +100,8 @@ contract VotingSystem {
         return values;
     }
 
-    function getOwner() public view returns (uint256) {
-        uint256 owner = AgendaProposalToken(APTAddress).getTotalTokenNumber();
-        return owner;
+    function getOwner(uint256 AgendaTokenId) public view returns (address) {
+        return APTcontract.getOwnerOfToken(AgendaTokenId);
     }
 }
 
