@@ -9,54 +9,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "spender",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "approve",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "account",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "amount",
-						"type": "uint256"
-					}
-				],
-				"name": "burn",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "to",
 						"type": "address"
 					},
@@ -120,7 +72,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/VotingSystem.sol": "AECToken"
+			"contracts/VotingSystem.sol": "AECInterface"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -135,11 +87,11 @@
 	},
 	"sources": {
 		"contracts/VotingSystem.sol": {
-			"keccak256": "0x5059ab3f8efa69de2212a29200588eef0496b405f7b3a91b71d41c9d247a5ceb",
+			"keccak256": "0x1f0429a9cdcf7399dc1e58b389baf2486a358d7ec774cab5d0796982409f0a26",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://88b34ac56c0d4cf0a40b89fb6f78e86a6e9bbaed8409302d44987e4a632ae395",
-				"dweb:/ipfs/QmWa74uspGQALkiqKuPbWPejm3ZvEEUxEJCBXC1YDsTFUW"
+				"bzz-raw://6143e733c637648cc6ac0bddb903dc4870efa14811ff76012d1025ac2f807898",
+				"dweb:/ipfs/Qmd146CgfvVXfksAfiBVyQVrDg3SSNQGtXP9z2dstyp9r6"
 			]
 		}
 	},

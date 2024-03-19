@@ -59,25 +59,6 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "AgendaTokenId",
-						"type": "uint256"
-					}
-				],
-				"name": "getOwner",
-				"outputs": [
-					{
-						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
 						"name": "agendaTokenId",
 						"type": "uint256"
 					}
@@ -125,11 +106,6 @@
 						"type": "uint256"
 					},
 					{
-						"internalType": "address",
-						"name": "voterAddress",
-						"type": "address"
-					},
-					{
 						"internalType": "uint256",
 						"name": "amount",
 						"type": "uint256"
@@ -169,11 +145,11 @@
 	},
 	"sources": {
 		"contracts/VotingSystem.sol": {
-			"keccak256": "0x87a2c816b8d3bd0c257752e4353e676d8a83fb359c5c917606037790d9efcf85",
+			"keccak256": "0x1f0429a9cdcf7399dc1e58b389baf2486a358d7ec774cab5d0796982409f0a26",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://19bb2e460450ec2411cbc475f10614fbf3fbec62b93cc8d431304404dff22961",
-				"dweb:/ipfs/QmXwgqXEwrLyKzjsgmtWpUvhpWJn4pJaaFgTh4LCiSZGyh"
+				"bzz-raw://6143e733c637648cc6ac0bddb903dc4870efa14811ff76012d1025ac2f807898",
+				"dweb:/ipfs/Qmd146CgfvVXfksAfiBVyQVrDg3SSNQGtXP9z2dstyp9r6"
 			]
 		}
 	},

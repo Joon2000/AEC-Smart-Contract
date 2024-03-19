@@ -3,10 +3,10 @@ pragma solidity ^0.8.19;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 
-contract AES is ERC20 {
+contract AEC is ERC20 {
     address owner;
 
-    constructor() ERC20("AES", "AES") {
+    constructor() ERC20("AEC", "AEC") {
         owner = msg.sender;
     }
 
@@ -27,4 +27,4 @@ contract AES is ERC20 {
     }
 }
 
-//0x44282DB3b3536b0b5AA27dF77Ba4EcD01332dea1
+//0xb07959116C226f4e5A089B9453Ac3370cD882b08

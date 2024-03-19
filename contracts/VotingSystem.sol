@@ -1,24 +1,23 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-interface AgendaProposalToken {
+interface APCInterface {
     function getTotalTokenNumber() external view returns(uint256);
     function getOwnerOfToken(uint256 tokenId) external view returns(address);
 }
 
-interface AECToken {
-    function approve(address spender, uint256 amount) external returns (bool);
-    function transferFrom(address from, address to, uint256 value) external returns (bool);
+interface AECInterface {
     function transfer(address to, uint256 value) external returns (bool);
-    function burn(address account, uint256 amount) external returns (bool);
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
 }
+
 
 contract VotingSystem {
     address APTAddress = 0xAdB8d027111ae2cB88e3C00730AF8EEeCBc21Ca8;
-    address AECAddress = 0x20552E92665A832cA5c3EA22199f4B1E800652c4;
+    // address  AECAddress = 0xb07959116C226f4e5A089B9453Ac3370cD882b08;
 
-    AgendaProposalToken APTcontract = AgendaProposalToken(APTAddress);
-    AECToken AECcontract = AECToken(AECAddress);
+    APCInterface APTcontract = APCInterface(APTAddress);
+    // AECInterface AECcontract = AECInterface(AECAddress);
 
     address contractOwner;
 
@@ -41,42 +40,38 @@ contract VotingSystem {
 
     constructor() {
         contractOwner = msg.sender;
+
     }
 
-    function vote(uint256 agendaTokenId, address voterAddress, uint256 amount) public {
-        require (contractOwner == msg.sender, "Only contract owner can confirm vote");
+    function vote(uint256 agendaTokenId, uint256 amount) public {
         require (agendaTokenId<=totalAgendaNumber, "No existing agenda id");
         require (amount>0, "0 token transferred");
         require (idToAgendaData[agendaTokenId].totalVotes+amount<=maxVoteToken, "Maximum available token input exceeded");
-        AECcontract.burn(voterAddress, amount);
-        // approveAndTransfer(voterAddress, amount);
+
+        // require(AECcontract.transferFrom(msg.sender, address(this), amount*10**18), "Transfer failed");
+
         AgendaStatus storage agenda = idToAgendaData[agendaTokenId];
         agenda.totalVotes+= amount;
 
         bool isVoterExists = false;
         for (uint i = 0; i < agenda.voters.length; i++) {
-            if (agenda.voters[i] == voterAddress) {
+            if (agenda.voters[i] == msg.sender) {
                 isVoterExists = true;
                 break;
             }
         }
         if (!isVoterExists) {
-            agenda.voters.push(voterAddress);
+            agenda.voters.push(msg.sender);
         }
 
-        agenda.voterTokenValue[voterAddress] += amount;
-        emit Vote(voterAddress, amount);
+        agenda.voterTokenValue[msg.sender] += amount;
+        emit Vote(msg.sender, amount);
         if(agenda.totalVotes==maxVoteToken){
             listedAgendaId.push(agendaTokenId);
             agenda.isListed = true;
             emit Listed(agendaTokenId);
         }
     }
-
-    // function approveAndTransfer(address spender, uint256 amount) private{
-    //     AECToken(AECAddress).approve(spender, amount);
-    //     AECToken(AECAddress).transferFrom(spender, contractOwner, amount);
-    // }
 
     function getVoteNumber(uint256 agendaTokenId) public view returns (uint256){
         return idToAgendaData[agendaTokenId].totalVotes;
@@ -99,9 +94,6 @@ contract VotingSystem {
         }
         return values;
     }
-
-    function getOwner(uint256 AgendaTokenId) public view returns (address) {
-        return APTcontract.getOwnerOfToken(AgendaTokenId);
-    }
 }
 
+//0xc886873C3fCFf315284Ee96FA2322aE7Eb3459d0
