@@ -31,6 +31,7 @@ contract VotingSystem {
         uint256 totalVotes;
         mapping(address=>uint256) voterTokenValue;
         bool isListed;
+        bool isDistributed;
     }
 
     mapping (uint256 => AgendaStatus) idToAgendaData;
@@ -81,9 +82,9 @@ contract VotingSystem {
         return listedAgendaId;
     }
 
-    function getVotingStatus(uint256 agendaTokenId) public view returns (address[] memory, uint256[] memory) {
+    function getVotingStatus(uint256 agendaTokenId) public view returns (address[] memory, uint256[] memory, bool, bool) {
         AgendaStatus storage agenda = idToAgendaData[agendaTokenId];
-        return (agenda.voters, getVoterTokenValues(agenda));
+        return (agenda.voters, getVoterTokenValues(agenda), agenda.isListed, agenda.isDistributed);
     }
 
     function getVoterTokenValues(AgendaStatus storage agenda) private view returns (uint256[] memory) {
@@ -96,4 +97,4 @@ contract VotingSystem {
     }
 }
 
-//0xc886873C3fCFf315284Ee96FA2322aE7Eb3459d0
+//0xbA3eFEA0c245a8E1637ca48Fc334Be95b4e1A249
